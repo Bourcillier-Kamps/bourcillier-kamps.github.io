@@ -1,15 +1,215 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bourcillier-Kamps</title>
+  <title>Bourcillier–Kamps — Publications</title>
+  <meta name="description" content="Bourcillier–Kamps: books and essays with stable, long-term links to archived PDF editions on the Internet Archive." />
+
+  <style>
+    :root{
+      --bg:#fbfbfb;
+      --text:#1a1a1a;
+      --muted:#5a5a5a;
+      --rule:#e6e6e6;
+      --link:#0b3d91;
+      --link-hover:#072a63;
+      --chip:#f1f1f1;
+      --shadow:0 1px 10px rgba(0,0,0,.04);
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{ color:var(--link); text-decoration:none; }
+    a:hover{ color:var(--link-hover); text-decoration:underline; }
+
+    /* 600px centered content area on desktop */
+    .wrap{
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+
+    header{
+      padding: 14px 0 18px;
+      border-bottom:1px solid var(--rule);
+      margin-bottom: 18px;
+    }
+    .title{
+      margin:0;
+      font-size: 1.85rem;
+      letter-spacing: .2px;
+      font-weight: 700;
+    }
+    .subtitle{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--rule);
+      border-radius: 12px;
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow);
+      margin: 16px 0;
+    }
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      letter-spacing: .2px;
+    }
+    p{ margin: 10px 0; }
+    .muted{ color: var(--muted); }
+
+    .list{
+      list-style:none;
+      padding:0;
+      margin: 0;
+    }
+    .item{
+      padding: 12px 0;
+      border-top:1px solid var(--rule);
+    }
+    .item:first-child{ border-top:none; padding-top: 2px; }
+    .item-title{
+      margin:0;
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+    .item-meta{
+      margin: 4px 0 8px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 8px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border:1px solid var(--rule);
+      border-radius: 10px;
+      background:#fff;
+      font-size: .95rem;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .btn:hover{
+      text-decoration:none;
+      border-color:#cfcfcf;
+    }
+    .chip{
+      display:inline-block;
+      font-size: .85rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--muted);
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    footer{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top:1px solid var(--rule);
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* mobile polish */
+    @media (max-width: 420px){
+      .title{ font-size: 1.6rem; }
+      .wrap{ padding: 22px 14px 48px; }
+      .card{ padding: 14px; }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Bourcillier-Kamps</h1>
-  <p>Official page.</p>
-  <ul>
-    <li><a href="https://archive.org/details/bourcillier-kamps">Archive.org collection</a></li>
-  </ul>
+  <main class="wrap">
+    <header>
+      <h1 class="title">Bourcillier–Kamps</h1>
+      <p class="subtitle">Publications & stable archive links</p>
+    </header>
+
+    <section class="card">
+      <h2>About</h2>
+      <p class="muted">
+        This page indexes our books and essays and points to long-term archived editions on the Internet Archive.
+        For permanence, each publication is referenced by a stable identifier.
+      </p>
+      <p class="muted">
+        Main archive: <a href="https://archive.org/details/bourcillier-kamps">archive.org/details/bourcillier-kamps</a>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Books</h2>
+
+      <ul class="list">
+        <li class="item">
+          <p class="item-title">Book Title One <span class="chip">Year</span></p>
+          <p class="item-meta">Short subtitle or description (1 line). Optional: publisher / edition info.</p>
+          <div class="actions">
+            <a class="btn" href="https://archive.org/details/bourcillier-kamps-book1">Internet Archive page</a>
+            <a class="btn" href="https://archive.org/download/bourcillier-kamps-book1">Direct downloads</a>
+          </div>
+        </li>
+
+        <li class="item">
+          <p class="item-title">Book Title Two <span class="chip">Year</span></p>
+          <p class="item-meta">Short subtitle or description (1 line). Optional: edition details.</p>
+          <div class="actions">
+            <a class="btn" href="https://archive.org/details/bourcillier-kamps-book2">Internet Archive page</a>
+            <a class="btn" href="https://archive.org/download/bourcillier-kamps-book2">Direct downloads</a>
+          </div>
+        </li>
+      </ul>
+
+      <p class="muted" style="margin-top:12px;">
+        Tip: keep identifiers consistent, e.g. <code>bourcillier-kamps-book3</code>, <code>bourcillier-kamps-essay-2026</code>.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Essays / Articles</h2>
+      <ul class="list">
+        <li class="item">
+          <p class="item-title">Essay Title <span class="chip">Year</span></p>
+          <p class="item-meta">Journal / venue (optional). One-line abstract.</p>
+          <div class="actions">
+            <a class="btn" href="https://archive.org/details/bourcillier-kamps-essay1">Internet Archive page</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Bourcillier–Kamps</div>
+      <div class="muted">For correspondence: <a href="mailto:you@example.com">you@example.com</a></div>
+    </footer>
+  </main>
+
+  <script>
+    // set year (no tracking, no external scripts)
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
