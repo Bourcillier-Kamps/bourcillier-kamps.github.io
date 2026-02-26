@@ -6,234 +6,443 @@
   <title>Bourcillier–Kamps — Publications</title>
   <meta name="description" content="Bourcillier–Kamps: books and essays with stable, long-term links to archived PDF editions on the Internet Archive." />
 
+
   <style>
-    :root{
-      --bg:#fbfbfb;
-      --text:#1a1a1a;
-      --muted:#5a5a5a;
-      --rule:#e6e6e6;
-      --link:#0b3d91;
-      --link-hover:#072a63;
-      --chip:#f1f1f1;
-      --shadow:0 1px 10px rgba(0,0,0,.04);
+    :root {
+      --bg: #f7f5f0;
+      --card: #ffffff;
+      --text: #1c1917;
+      --muted: #6b6560;
+      --rule: #e5e0d8;
+      --link: #7c3d12;
+      --link-hover: #431407;
+      --accent: #92400e;
+      --chip-bg: #fef3c7;
+      --chip-text: #78350f;
+      --shadow: 0 2px 16px rgba(0,0,0,.06);
+      --shadow-hover: 0 4px 24px rgba(0,0,0,.11);
+      --max-w: 820px;
+      --cover-w: 120px;
     }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.55;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-    a{ color:var(--link); text-decoration:none; }
-    a:hover{ color:var(--link-hover); text-decoration:underline; }
 
-    /* 600px centered content area on desktop */
-    .wrap{
-      max-width: 600px;
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--link); text-decoration: none; transition: color .15s; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    .wrap {
+      max-width: var(--max-w);
       margin: 0 auto;
-      padding: 28px 18px 56px;
+      padding: 40px 24px 72px;
     }
 
-    header{
-      padding: 14px 0 18px;
-      border-bottom:1px solid var(--rule);
-      margin-bottom: 18px;
+    /* ── Header ── */
+    header {
+      padding: 0 0 32px;
+      margin-bottom: 32px;
+      border-bottom: 2px solid var(--text);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    .title{
-      margin:0;
-      font-size: 1.85rem;
-      letter-spacing: .2px;
+    .title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 2.6rem;
       font-weight: 700;
+      letter-spacing: -.5px;
+      line-height: 1.1;
     }
-    .subtitle{
+    .subtitle {
       margin: 6px 0 0;
       color: var(--muted);
       font-size: 1rem;
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: .5px;
     }
+    .header-archive {
+      font-size: .88rem;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.5;
+    }
+    .header-archive a { color: var(--accent); font-weight: 400; }
 
-    .card{
-      background:#fff;
-      border:1px solid var(--rule);
-      border-radius: 12px;
-      padding: 16px 16px 14px;
+    /* ── Intro card ── */
+    .intro-card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      padding: 20px 24px;
       box-shadow: var(--shadow);
-      margin: 16px 0;
+      margin-bottom: 32px;
+      font-size: .97rem;
+      color: var(--muted);
+      border-left: 4px solid var(--accent);
+    }
+    .intro-card strong { color: var(--text); font-weight: 400; }
+
+    /* ── Section label ── */
+    .section-label {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 16px;
     }
 
-    h2{
-      margin: 0 0 10px;
-      font-size: 1.1rem;
+    /* ── Book list ── */
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ── Book card ── */
+    .item {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      gap: 0;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .item:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Cover column */
+    .item-cover {
+      flex: 0 0 var(--cover-w);
+      width: var(--cover-w);
+      background: #f0ece4;
+      display: flex;
+      align-items: stretch;
+      border-right: 1px solid var(--rule);
+    }
+    .item-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .item-cover .no-cover {
+      width: 100%;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--rule);
+      font-size: 2rem;
+    }
+
+    /* Content column */
+    .item-content {
+      flex: 1;
+      padding: 18px 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .item-title {
+      margin: 0 0 6px;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1.25;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    .item-author {
+      margin: 0 0 8px;
+      font-size: .85rem;
+      color: var(--accent);
+      font-style: italic;
+      font-weight: 300;
       letter-spacing: .2px;
     }
-    p{ margin: 10px 0; }
-    .muted{ color: var(--muted); }
 
-    .list{
-      list-style:none;
-      padding:0;
-      margin: 0;
-    }
-    .item{
-      padding: 12px 0;
-      border-top:1px solid var(--rule);
-    }
-    .item:first-child{ border-top:none; padding-top: 2px; }
-    .item-title{
-      margin:0;
-      font-weight: 700;
-      font-size: 1.02rem;
-    }
-    .item-meta{
-      margin: 4px 0 8px;
+    .item-meta {
+      margin: 0 0 14px;
       color: var(--muted);
-      font-size: .95rem;
+      font-size: .93rem;
+      line-height: 1.6;
+      flex: 1;
     }
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 8px;
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
     }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border:1px solid var(--rule);
-      border-radius: 10px;
-      background:#fff;
-      font-size: .95rem;
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      background: var(--bg);
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: .85rem;
+      font-weight: 400;
+      color: var(--link);
       line-height: 1;
       white-space: nowrap;
+      transition: background .15s, border-color .15s;
     }
-    .btn:hover{
-      text-decoration:none;
-      border-color:#cfcfcf;
+    .btn:hover {
+      background: #fef9f0;
+      border-color: #d6c8b0;
+      text-decoration: none;
+      color: var(--link-hover);
     }
-    .chip{
-      display:inline-block;
-      font-size: .85rem;
-      padding: 3px 8px;
+
+    .chip {
+      display: inline-block;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: .78rem;
+      font-weight: 400;
+      padding: 3px 9px;
       border-radius: 999px;
-      background: var(--chip);
-      color: var(--muted);
-      margin-left: 8px;
+      background: var(--chip-bg);
+      color: var(--chip-text);
+      margin-left: 10px;
       vertical-align: middle;
+      letter-spacing: .3px;
     }
 
-    footer{
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top:1px solid var(--rule);
+    /* ── Footer ── */
+    footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
       color: var(--muted);
-      font-size: .95rem;
+      font-size: .9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    footer a { color: var(--accent); }
+
+    /* ── Mobile ── */
+    @media (max-width: 560px) {
+      .title { font-size: 2rem; }
+      header { flex-direction: column; align-items: flex-start; }
+      .header-archive { text-align: left; }
+      .item { flex-direction: column; }
+      .item-cover {
+        flex: none;
+        width: 100%;
+        height: 180px;
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+      }
+      .item-cover img { object-position: top; }
+      .item-cover .no-cover { min-height: 80px; }
+      --cover-w: 100%;
     }
 
-    /* mobile polish */
-    @media (max-width: 420px){
-      .title{ font-size: 1.6rem; }
-      .wrap{ padding: 22px 14px 48px; }
-      .card{ padding: 14px; }
+    @media (min-width: 561px) and (max-width: 700px) {
+      :root { --cover-w: 100px; }
     }
   </style>
 </head>
 
 <body>
   <main class="wrap">
+
     <header>
-      <h1 class="title">Bourcillier–Kamps</h1>
-      <p class="subtitle">Publications</p>
+      <div>
+        <h1 class="title">Bourcillier–Kamps</h1>
+        <p class="subtitle">Publications</p>
+      </div>
+      <div class="header-archive">
+        Internet Archive<br>
+        <a href="https://archive.org/details/@bourcillier-kamps">@bourcillier-kamps</a>
+      </div>
     </header>
 
-    <section class="card">
-	<!--
-      <h2>About</h2>
-	  -->
-      <p class="muted">
-        This page indexes books by <strong>Patricia Bourcillier</strong> and <strong>Bernd Sebastian Kamps</strong> and points to long-term archived editions on the Internet Archive.
-        
-      </p>
-      <p class="muted">
-        Main archive: <a href="https://archive.org/details/@bourcillier-kamps">archive.org/details/@bourcillier-kamps</a>
-      </p>
-    </section>
+    <div class="intro-card">
+      Books by <strong>Patricia Bourcillier</strong> and <strong>Bernd Sebastian Kamps</strong> — with stable, long-term links to archived PDF editions on the Internet Archive.
+    </div>
 
-    <section class="card">
+    <p class="section-label">Books &amp; Textbooks</p>
 
-      <ul class="list">
-<li class="item">
-  <p class="item-title">Il était une fois à Ouahigouya <span class="chip">2023</span></p>
-  <p class="item-meta">
-    Patricia Bourcillier — Political travel account (Upper Volta / Burkina Faso, 1977).
-  </p>
-  <div class="actions">
-    <a class="btn" href="https://archive.org/details/bourcillier-ouahigouya-2023">Internet Archive page</a>
-    <a class="btn" href="https://archive.org/download/bourcillier-ouahigouya-2023">Direct downloads</a>
-  </div>
-</li>
+    <ul class="list">
 
-
-
-<li class="item">
-  <p class="item-title">La Mémoire oubliée des Todesco <span class="chip">2019</span></p>
-  <p class="item-meta">
-    — Historical / genealogical account of the Todesco family and Ashkenazi migrations (Carolingian era → Italy, Spain, Romanian lands → Italy).
-  </p>
-  <div class="actions">
-    <a class="btn" href="https://archive.org/details/Todesco">Internet Archive page</a>
-    <a class="btn" href="https://archive.org/download/Todesco">Direct downloads</a>
-  </div>
-</li>
-
-<li class="item">
-  <p class="item-title">Sardegna Madre <span class="chip">2003</span></p>
-  <p class="item-meta">
-    Le mot "exil" évoque le plus souvent des images de misère, de guerre, de
-persécutions politiques ou religieuses, rarement l'émigration
-volontaire, nourrie d'un amour de l'ailleurs, d'un besoin d'ouverture
-sur l'inconnu, d'affrontement avec l'étrangeté.
-  </p>
-  <div class="actions">
-    <a class="btn" href="https://archive.org/details/sardegna-madre">Internet Archive page</a>
-    <a class="btn" href="https://archive.org/download/sardegna-madre">Direct downloads</a>
-  </div>
-</li>
-
-        
-
-      <p class="muted" style="margin-top:12px;">
-        Tip: keep identifiers consistent, e.g. <code>bourcillier-kamps-book3</code>, <code>bourcillier-kamps-essay-2026</code>.
-      </p>
-    </section>
-
-<!--
-    <section class="card">
-      <h2>Essays / Articles</h2>
-      <ul class="list">
-        <li class="item">
-          <p class="item-title">Essay Title <span class="chip">Year</span></p>
-          <p class="item-meta">Journal / venue (optional). One-line abstract.</p>
+      <!-- Ouahigouya -->
+      <li class="item">
+        <div class="item-cover">
+          <img src="https://archive.org/services/img/bourcillier-ouahigouya-2023" alt="Cover – Il était une fois à Ouahigouya" loading="lazy">
+        </div>
+        <div class="item-content">
+          <p class="item-title">Il était une fois à Ouahigouya <span class="chip">2023</span></p>
+          <p class="item-author">Patricia Bourcillier</p>
+          <p class="item-meta">
+            Political travel account set in Upper Volta (now Burkina Faso) in 1977. A rare portrait of rural West African society on the eve of revolution — friendship, generosity, and political hope.
+          </p>
           <div class="actions">
-            <a class="btn" href="https://archive.org/details/bourcillier-kamps-essay1">Internet Archive page</a>
+            <a class="btn" href="https://archive.org/details/bourcillier-ouahigouya-2023">Internet Archive page</a>
+            <a class="btn" href="https://archive.org/download/bourcillier-ouahigouya-2023">Direct downloads</a>
           </div>
-        </li>
-      </ul>
-    </section>
--->
+        </div>
+      </li>
 
+      <!-- COVID Reference -->
+      <li class="item">
+        <div class="item-cover">
+          <img src="https://archive.org/services/img/kamps-covid-reference" alt="Cover – COVID Reference" loading="lazy">
+        </div>
+        <div class="item-content">
+          <p class="item-title">COVID Reference <span class="chip">2021</span></p>
+          <p class="item-author">Bernd Sebastian Kamps &amp; Christian Hoffmann</p>
+          <p class="item-meta">
+            What did we know about COVID-19 in January 2021? Sixth edition of a comprehensive medical textbook covering virology, clinical presentation, diagnostics, treatment, and prevention. 554 pages. <em>Note: no longer up to date.</em>
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://archive.org/details/kamps-covid-reference">Internet Archive page</a>
+            <a class="btn" href="https://archive.org/download/kamps-covid-reference">Direct downloads</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Todesco -->
+      <li class="item">
+        <div class="item-cover">
+          <img src="https://archive.org/services/img/Todesco" alt="Cover – La Mémoire oubliée des Todesco" loading="lazy">
+        </div>
+        <div class="item-content">
+          <p class="item-title">La Mémoire oubliée des Todesco <span class="chip">2019</span></p>
+          <p class="item-author">Patricia Bourcillier</p>
+          <p class="item-meta">
+            Historical and genealogical account tracing the Todesco family across centuries — from Carolingian Germania through the Crusades, Spain, Romanian lands, and finally Italy.
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://archive.org/details/Todesco">Internet Archive page</a>
+            <a class="btn" href="https://archive.org/download/Todesco">Direct downloads</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- GigaMartinique -->
+      <li class="item">
+        <div class="item-cover">
+          <img src="https://archive.org/services/img/kamps-giga-martinique-french" alt="Cover – GigaMartinique" loading="lazy">
+        </div>
+        <div class="item-content">
+          <p class="item-title">GigaMartinique <span class="chip">2019</span></p>
+          <p class="item-author">Bernd Sebastian Kamps &amp; Marie-José Desnel</p>
+          <p class="item-meta">
+            Pour la première fois dans l'histoire, le fascinant créole martiniquais est rendu accessible à des milliards de personnes. Entièrement gratuit : PDF, application smartphone, et contenus pédagogiques en ligne.
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://archive.org/details/kamps-giga-martinique-french">Internet Archive page</a>
+            <a class="btn" href="https://archive.org/download/kamps-giga-martinique-french">Direct downloads</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Sardegna Madre -->
+      <li class="item">
+        <div class="item-cover">
+          <img src="https://archive.org/services/img/sardegna-madre" alt="Cover – Sardegna Madre" loading="lazy">
+        </div>
+        <div class="item-content">
+          <p class="item-title">Sardegna Madre <span class="chip">2003</span></p>
+          <p class="item-author">Patricia Bourcillier</p>
+          <p class="item-meta">
+            Le mot "exil" évoque le plus souvent des images de misère, de guerre, de persécutions politiques ou religieuses, rarement l'émigration volontaire, nourrie d'un amour de l'ailleurs, d'un besoin d'ouverture sur l'inconnu, d'affrontement avec l'étrangeté.
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://archive.org/details/sardegna-madre">Internet Archive page</a>
+            <a class="btn" href="https://archive.org/download/sardegna-madre">Direct downloads</a>
+          </div>
+        </div>
+      </li>
+	  
+<li class="item">
+  <div class="item-cover">
+    <img src="https://archive.org/services/img/bourcillier-Magersucht" alt="Cover – Magersucht & Androgynie" loading="lazy">
+  </div>
+  <div class="item-content">
+    <p class="item-title">Magersucht &amp; Androgynie <span class="chip">1994</span></p>
+    <p class="item-author">Patricia Bourcillier</p>
+    <p class="item-meta">
+      Es wurde viel über diese jungen Menschen geschrieben, insbesondere über Frauen, 
+      die aufhören zu essen, weil sie plötzlich abnehmen und leicht wie eine Sylphe 
+      werden wollen. Ein Essay über Magersucht, Körperbild und die symbolische Rolle 
+      der Nahrung in menschlichen Beziehungen.
+    </p>
+    <div class="actions">
+      <a class="btn" href="https://archive.org/details/bourcillier-Magersucht">Internet Archive page</a>
+      <a class="btn" href="https://archive.org/download/bourcillier-Magersucht">Direct downloads</a>
+    </div>
+  </div>
+</li>
+ 	  
+	  
+	  
+<li class="item">
+  <div class="item-cover">
+    <img src="https://archive.org/services/img/bourcillierkamps-franzoesisch-fuer-mollis-und-mueslis" alt="Cover – Französisch für Mollis & Müslis" loading="lazy">
+  </div>
+  <div class="item-content">
+    <p class="item-title">Französisch für Mollis &amp; Müslis <span class="chip">1983</span></p>
+    <p class="item-author">Patricia Bourcillier &amp; Bernd Sebastian Kamps</p>
+    <p class="item-meta">
+      Französisch lernen mit echten Gesprächen — so wie man sie in der Kneipe führt, 
+      auf Festen oder wo auch immer, wenn man sich für die Menschen interessiert. 
+      Ein unkonventionelles Sprachlernbuch abseits der Touristenkanäle.
+    </p>
+    <div class="actions">
+      <a class="btn" href="https://archive.org/details/bourcillierkamps-franzoesisch-fuer-mollis-und-mueslis">Internet Archive page</a>
+      <a class="btn" href="https://archive.org/download/bourcillierkamps-franzoesisch-fuer-mollis-und-mueslis">Direct downloads</a>
+    </div>
+  </div>
+</li>
+
+	  
+
+    </ul>
 
     <footer>
       <div>© <span id="y"></span> Bourcillier–Kamps</div>
-      <div class="muted">For correspondence: <a href="mailto:you@example.com">you@example.com</a></div>
+      <div><a href="mailto:you@example.com">you@example.com</a></div>
     </footer>
   </main>
 
   <script>
-    // set year (no tracking, no external scripts)
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
